@@ -12,7 +12,7 @@ function serverStaticFile(res,path,contentType,responseCode){
             res.writeHead(500,{'Content-Type':'text/plain'});
             res.end("500 - internal Error");
         } else {
-            res.writeHead(500,{'Content-Type':contentType});
+            res.writeHead(responseCode,{'Content-Type':contentType});
             res.end(data);            
         }
     });
