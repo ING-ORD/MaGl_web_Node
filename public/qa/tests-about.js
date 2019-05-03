@@ -1,5 +1,5 @@
 suite('Тесты на странице "О ..."',function(){
     test("Страница должна содержать ссылку на страницу контактов", function(){
-        assert($('a[href="/contact"]').length);
+        assert(document.querySelectorAll('a[href="/contact"]').length);
     });
 });
