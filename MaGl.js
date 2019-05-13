@@ -2,7 +2,16 @@ var express = require("express");
 var fortune = require("./lib/fortune.js");
 var app = express();
 
-var handlebars = require("express-handlebars").create({defaultLayout:"main"});
+var handlebars = require("express-handlebars").create({
+	defaultLayout:"main",
+	helpers: {
+		section: function (name,options){
+			if(!this._sections) this._sections = {};
+			this._sections[name] = options.fn(this);
+			return null;
+		}
+	}
+});
 
 
 app.use(express.static(__dirname + "/public/"));
@@ -34,6 +43,22 @@ app.get("/tours/request-group-rate",function(req,res){
 
 app.get("/tours/hood-river",function(req,res){
     res.render("tours/hood-river");
+});
+
+app.get("/jquery",function(req,res){
+	res.render("jquery-test")
+});
+
+app.get('/nursery-rhyme', function(req, res){
+    res.render('nursery-rhyme');
+ });
+ app.get('/data/nursery-rhyme', function(req, res){
+    res.json({
+        animal: 'бельчонок',
+        bodyPart: 'хвост',
+        adjective: 'пушистый',
+        noun: 'черт'
+    });
 });
 
 

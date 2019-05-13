@@ -5,14 +5,16 @@
     {{#if showTests}}
         <link rel="stylesheet" href="/vendor/mocha.css">
     {{/if}}
-    <script
-			  src="https://code.jquery.com/jquery-3.4.1.js"
-			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-			  crossorigin="anonymous"></script>
+    {{{_sections.head}}}
+    
 </head>
 <body>
     <header><img src = "/img/logo.jpg" alt = "Логотип MaGl"></header>
     {{{body}}}
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+    </script>
+    {{{_sections.jquery}}}
     {{#if showTests}}
         <div id="mocha"></div>
         <script src="/vendor/mocha.js"></script>
