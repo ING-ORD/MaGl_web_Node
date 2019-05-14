@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/ING-ORD/MaGl_web_Node#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2"
   },

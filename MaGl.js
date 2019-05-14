@@ -26,6 +26,25 @@ app.use(function(req,res,next){
     next();
 });
 
+app.use(require("body-parser").urlencoded({extended:true}));
+app.get("/newsletter", function(req,res){
+    res.render("newsletter",{csrf:"CSRF token goes here"});
+});
+app.post("/process", function(req,res){
+    if(req.xhr || req.accepts('json,html' )==='json' ){    
+        // если здесь есть ошибка, то мы должны отправить { error: 'описание ошибки' }                
+        res.send({ success: true });    
+    } else {    
+        // если бы была ошибка, нам нужно было бы перенаправлять на страницу ошибки        
+        res.redirect(303, '/thank-you' );    
+    } 
+    // console.log('Form (from querystring): ' + req.query.form);
+    // console.log('CSRF token (from hidden form field): ' + req.body._csrf);
+    // console.log('Name (from visible form field): ' + req.body.name);    
+    // console.log('Email (from visible form field): ' + req.body.email);   
+    // res.redirect(303, '/thank-you' );
+});
+
 app.get("/",function(req,res){
     res.render('home');
 });
